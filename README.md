@@ -23,26 +23,25 @@ The [MADIVA Data Sharing Policy](docs/madiva_data_sharing_301.pdf) balances thre
 
 The key data objects modelled in the MADIVA data are:
 
-- **Individuals**: These are the individuals in the HDSS whose data we have. The individuals table records basic individual-level data: a unique code, a year of birth and death (which may be off by 1).
+- **Individuals**: These are the individuals in the HDSS whose data we have. The individuals table records basic individual-level data: a unique individual_id, a date of birth and death (which may be off by 1).
 
-- **Household**: A household is logical conceptual unit - a number of individuals live in a household. Typically a household maps to one physical house but in some cases may physically move. Which individuals live in a household may change over time.
+- **Households**: A household is logical conceptual unit - a number of individuals live in a household. Typically a household maps to a physical geographic location. Individuals within a household may change over time as some move in/out.
 
 The other tables capture information about and relate the individuals and households. The major tables are listed above.
 
 
-- **ncd_indicators**: This is the largest table and the core of our database. Each row records a health data point about one individual. A row contains details of the person, what type of health data is being collected, the value of that data, when the data was collected and what the provenance of the data.
+- **NCD Indicators**: This is the largest table and the core of our database. Each row records a health data point about one individual. A row contains details of the person, what type of health data is being collected, the value of that data, when the data was collected and what the provenance of the data.
 
-- **ses_indicators**: Similar to above but including socio-economic data.
+- **Individual SES Indicators**: Similar to above but including socio-economic data of individuals such as education, marital, and employment status.
 
-- **hh_memberships**: Records which for each person when they belonged to which households.
+- **Individual Events**: Records the event history of all individuals within the HDSS, including when they joined the surveillance, as well as their current status within the HDSS (i.e. still current within the HDSS, moved out, or died).
+  
+- **HH Memberships**: Records the membership records of everyone within the HDSS, linking individuals to their household and indicating their relationship with the head of the household for each episode.
 
-- **verbal_autopsy**: For a subset of the individuals.
+- **Verbal Autopsy**: This includes a subset of data from the WHO standard questionnaire for all deaths occurring within the HDSS.
+  
+- **Household Assets**: This contains records of the asset socio-economic status (SES) of households within the HDSS for various observatons.
 
 There are also some small auxiliary tables that describe the data sources and the ncd indicators. A simplified entity-relationship diagram is shown below:
 
 ![MADIVA ER](docs/ER.jpg)
-
-
-
-
-
